@@ -49,16 +49,19 @@
 | MANAGE GRANTS | Enables granting or revoking privileges on objects for which the role is not the owner. | Must be granted by the SECURITYADMIN role (or higher).| 
 | CREATE DATA EXCHANGE LISTING | Enables creating a new Data Exchange listing. | Must be granted by the ACCOUNTADMIN role. |
 | CREATE INTEGRATION | Enables creating a new notification, security, or storage integration. | Must be granted by the ACCOUNTADMIN role.|
-|CREATE NETWORK POLICY|Enables creating a new network policy.||
+|CREATE NETWORK POLICY|Enables creating a new network policy.|
+|
 |CREATE SHARE|Enables a data provider to create a new share. For more details, see Enabling non-ACCOUNTADMIN Roles to Perform Data Sharing Tasks.|Must be granted by the ACCOUNTADMIN role.|
-|CREATE WAREHOUSE|Enables creating a new virtual warehouse.||
+|CREATE WAREHOUSE|Enables creating a new virtual warehouse.|
+|
 |EXECUTE MANAGED TASK|Grants ability to create tasks that rely on Snowflake-managed compute resources (serverless compute model). Only required for serverless tasks. The role that has the OWNERSHIP privilege on a task must have both the EXECUTE MANAGED TASK and the EXECUTE TASK privilege for the task to run.|Must be granted by the ACCOUNTADMIN role.|
 |EXECUTE TASK|Grants ability to run tasks owned by the role. For serverless tasks to run, the role that has the OWNERSHIP privilege on the task must also have the global EXECUTE MANAGED TASK privilege.|Must be granted by the ACCOUNTADMIN role.|
 |IMPORT SHARE|Enables a data consumer to view shares shared with their account. Also grants the ability to create databases from shares; requires the global CREATE DATABASE privilege. For more details, see Enabling non-ACCOUNTADMIN Roles to Perform Data Sharing Tasks.|Must be granted by the ACCOUNTADMIN role.|
 |MONITOR EXECUTION|Grants ability to monitor any pipes or tasks in the account.|Must be granted by the ACCOUNTADMIN role. The USAGE privilege is also required on each database and schema that stores these objects.|
 |MONITOR USAGE|Grants ability to monitor account-level usage and historical information for databases and warehouses; for more details, see Enabling Non-Account Administrators to Monitor Usage and Billing History in the Classic Web Interface. Additionally grants ability to view managed accounts using SHOW MANAGED ACCOUNTS.|Must be granted by the ACCOUNTADMIN role.|
 |OVERRIDE SHARE RESTRICTIONS|Grants ability to set value for the SHARE_RESTRICTIONS parameter which enables a Business Critical provider account to add a consumer account (with Non-Business Critical edition) to a share.|For more details, see Enabling Sharing from a Business Critical Account to a non-Business Critical Account.|
-| ALL [ PRIVILEGES ] | Grants all global privileges.||
+| ALL [ PRIVILEGES ] | Grants all global privileges.|
+|
 
 <br>
 
@@ -83,4 +86,116 @@
 
  |   PRIVILEDGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
-|
+|MODIFY|Enables altering any properties of a resource monitor, such as changing the monthly credit quota.|MONITOR|Enables viewing a resource monitor.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on the resource monitor.|
+
+<br>
+
+# Virtual Warehouse Privileges 
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|MODIFY|Enables altering any properties of a warehouse, including changing its size. Required to assign a warehouse to a resource monitor. Note that only the ACCOUNTADMIN role can assign warehouses to resource monitors.|
+|MONITOR|Enables viewing current and past queries executed on a warehouse as well as usage statistics on that warehouse.|OPERATE|Enables changing the state of a warehouse (stop, start, suspend, resume). In addition, enables viewing current and past queries executed on a warehouse and aborting any executing queries.|
+|USAGE|Enables using a virtual warehouse and, as a result, executing queries on the warehouse. If the warehouse is configured to auto-resume when a SQL statement (e.g. query) is submitted to it, the warehouse resumes automatically and executes the statement.|
+|OWNERSHIP|Grants full control over a warehouse. Only a single role can hold this privilege on a specific object at a time.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on the warehouse.|
+
+<br>
+
+# Connection Privileges 
+None 
+
+<br>
+
+# Integration Privileges 
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|USAGE|Enables referencing the storage integration when creating a stage (using CREATE STAGE) or modifying a stage (using ALTER STAGE).|
+USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if this privilege is granted to the client or user. Configure the External OAuth security integration to use the EXTERNAL_OAUTH_ANY_ROLE_MODE parameter using CREATE SECURITY INTEGRATION (External OAuth) or ALTER SECURITY INTEGRATION (External OAuth).|
+|OWNERSHIP|Grants full control over an integration. Only a single role can hold this privilege on a specific object at a time.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on the integration.|
+
+<br>
+
+# Network Policy Privileges
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|OWNERSHIP|Grants full control over the network policy. Only a single role can hold this privilege on a specific object at a time.|
+
+<br>
+
+# Session Policy Privileges 
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|OWNERSHIP|Transfers ownership of a session policy, which grants full control over the session policy. Required to alter most properties of a session policy.|
+
+<br>
+
+# Data Exchange Privileges 
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|IMPORTED PRIVILEGES|Enables roles other than the owning role to manage a Snowflake Marketplace or Data Exchange.|
+
+<br>
+
+# Data Exchange Listing Privileges
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|MODIFY|Enables roles other than the owning role to modify a Snowflake Marketplace or Data Exchange listing.|
+|USAGE|Enables viewing a Snowflake Marketplace or Data Exchange listing.|
+|OWNERSHIP|Grants full control over a Snowflake Marketplace or Data Exchange listing. Only a single role can hold this privilege on a specific object at a time.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on a Snowflake Marketplace or Data Exchange listing.|
+
+<br>
+
+# Database Privileges 
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|MODIFY|Enables altering any settings of a database.|
+|MONITOR|Enables performing the DESCRIBE command on the database.|
+|USAGE|Enables using a database, including returning the database details in the SHOW DATABASES command output. Additional privileges are required to view or take actions on objects in a database.|
+|CREATE SCHEMA|Enables creating a new schema in a database, including cloning a schema.|IMPORTED PRIVILEGES|Enables roles other than the owning role to access a shared database; applies only to shared databases.|OWNERSHIP|Grants full control over the database. Only a single role can hold this privilege on a specific object at a time.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on a database.|
+
+<br>
+
+### Notes:
+* Changing the properties of a database, including comments, requires the OWNERSHIP privilege for the database.
+
+* If **any** database privilege is granted to a role, that role can take SQL actions on objects in a schema using fully-qualified names. The role must have the USAGE privilege on the schema as well as the required privilege or privileges on the object. To make a database the active database in a user session, the USAGE privilege on the database is required.
+
+<br>
+
+# Schema Privileges
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|MODIFY|Enables altering any settings of a schema.|
+|MONITOR|Enables performing the DESCRIBE command on the schema.|
+|USAGE|Enables using a schema, including returning the schema details in the SHOW SCHEMAS command output. To execute SHOW objects> commands for objects (tables, views, stages, file formats, sequences, pipes, or functions) in the schema, a role must have at least one privilege granted on the object.|
+|CREATE TABLE|Enables creating a new table in a schema, including cloning a table. Note that this privilege is not required to create temporary tables, which are scoped to the current user session and are automatically deleted when the session ends.|
+|CREATE EXTERNAL TABLE|Enables creating a new external table in a schema.|
+|CREATE VIEW|Enables creating a new view in a schema.|
+|CREATE MATERIALIZED VIEW|Enables creating a new materialized view in a schema.|
+|CREATE MASKING POLICY|Enables creating a new Column-level Security masking policy in a schema.|
+|CREATE ROW ACCESS POLICY|Enables creating a new row access policy in a schema.|
+|CREATE SESSION POLICY|Enables creating a new session policy in a schema.|
+|CREATE STAGE|Enables creating a new stage in a schema, including cloning a stage.|
+|CREATE FILE FORMAT|Enables creating a new file format in a schema, including cloning a file format.|
+|CREATE SEQUENCE|Enables creating a new sequence in a schema, including cloning a sequence.|
+|CREATE FUNCTION|Enables creating a new UDF or external function in a schema.|
+|CREATE PIPE|Enables creating a new pipe in a schema.|
+|CREATE STREAM|Enables creating a new stream in a schema, including cloning a stream.|
+|CREATE TAG|Enables creating a new tag key in a schema.|
+|CREATE TASK|Enables creating a new task in a schema, including cloning a task.|
+|CREATE PROCEDURE|Enables creating a new stored procedure in a schema.|
+|ADD SEARCH OPTIMIZATION|Enables adding search optimization to a table in a schema.|
+|OWNERSHIP|Grants full control over the schema. Only a single role can hold this privilege on a specific object at a time.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on a schema.|
+
+<br>
+
+### Notes:
+
+* Changing the properties of a schema, including comments, requires the OWNERSHIP privilege for the database.
+
+* Operating on a schema also requires the USAGE privilege on the parent database.
