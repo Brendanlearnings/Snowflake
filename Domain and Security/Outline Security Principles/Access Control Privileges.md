@@ -59,7 +59,6 @@
 |MONITOR USAGE|Grants ability to monitor account-level usage and historical information for databases and warehouses; for more details, see Enabling Non-Account Administrators to Monitor Usage and Billing History in the Classic Web Interface. Additionally grants ability to view managed accounts using SHOW MANAGED ACCOUNTS.|Must be granted by the ACCOUNTADMIN role.|
 |OVERRIDE SHARE RESTRICTIONS|Grants ability to set value for the SHARE_RESTRICTIONS parameter which enables a Business Critical provider account to add a consumer account (with Non-Business Critical edition) to a share.|For more details, see Enabling Sharing from a Business Critical Account to a non-Business Critical Account.|
 | ALL [ PRIVILEGES ] | Grants all global privileges.|
-|
 
 <br>
 
