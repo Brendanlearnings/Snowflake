@@ -1,7 +1,37 @@
+## Topic quick links
+* [All Privileges](#all-privileges)
+* [Global Privileges](#global-privileges)
+* [User Privileges](#user-privileges)
+* [Role Privileges](#role-privileges)
+* [Resource Monitor Privileges](#resource-monitor-privileges )
+* [Virtual Warehouse Privileges](#virtual-warehouse-privileges)
+* [Connection Privileges](#connection-privileges)
+* [Integration Privileges](#integration-privileges)
+* [Network Policy Privileges](#network-policy-privileges)
+* [Session Policy Privileges](#session-policy-privileges )
+* [Data Exchange Privileges](#data-exchange-privileges)
+* [Data Exchange Listing Privileges](#data-exchange-listing-privileges)
+* [Database Privileges](#database-privileges)
+* [Schema Privileges](#schema-privileges)
+* [Table Privileges](#table-privileges)
+* [External Table Privileges](#external-table-privileges)
+* [View Privileges](#view-privileges)
+* [Stage Privileges](#stage-privileges)
+* [File Format Privileges](#file-format-privileges)
+* [Pipe Privileges](#pipe-privileges)
+* [Stream Privileges](#stream-privileges)
+* [Task Privileges](#task-privileges)
+* [Masking Policy Privileges](#masking-policy-privileges)
+* [Row Access Policy Privileges](#row-access-policy-privileges)
+* [Tag Privileges](#tag-privileges)
+* [Sequence Privileges](#sequence-privileges)
+* [Stored Procedure Privileges](#stored-procedure-privileges)
+* [UDF](#user-defined-function-(udf)-and-external-function-privileges)
 
-# All Privileges  
+<br>
+<br>
 
-
+# All Privileges
 |   PRIVILEGE                                                                  | OBJECT TYPE                                                             | DESCRIPTION |
 |-------------------------------------------------------------------------------|:-------------------------------------------------------------------------:|-------------|
 | ALL [ PRIVILEGES ]                                                            | All                                                                     | Grants all the privileges for the specified object type.|
