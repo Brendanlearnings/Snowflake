@@ -63,47 +63,47 @@
 |[COPY_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/copy_history.html)|Historical|2 hours [2]|Data retained for 1 year.|
 |[DATABASES](https://docs.snowflake.com/en/sql-reference/account-usage/databases.html)|Object|3 hours||
 |[DATABASE_STORAGE_USAGE_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/database_storage_usage_history.html)|Historical|3 hours|Data retained for 1 year.|
-|DATA_TRANSFER_HISTORY|Historical|2 hours|Data retained for 1 year.|
-|FILE_FORMATS|Object|2 hours||
-|FUNCTIONS|Object|2 hours||
-|GRANTS_TO_ROLES|Object|2 hours||
-|GRANTS_TO_USERS|Object|2 hours||
-|LOAD_HISTORY|Historical|90 minutes [2]|Data retained for 1 year.||
-|LOGIN_HISTORY|Historical|2 hours|Data retained for 1 year.|
-|MASKING_POLICIES|Object|2 hours||
-|MATERIALIZED_VIEW_REFRESH_HISTORY|Historical|3 hours|Data retained for 1 year.|
-|METERING_DAILY_HISTORY|Historical|3 hours|Data retained for 1 year.|
-|METERING_HISTORY|Historical|3 hours|Data retained for 1 year.|
-|OBJECT_DEPENDENCIES|Historical|3 hours||
-|PIPES|Object|2 hours||
-|PIPE_USAGE_HISTORY|Historical|3 hours|Data retained for 1 year.||
-|POLICY_REFERENCES|Object|2 hours||
-|QUERY_ACCELERATION_ELIGIBLE|Historical|3 hours|Data retained for 1 year.|
-|QUERY_ACCELERATION_HISTORY|Historical|3 hours|Available as part of the Query Acceleration Service preview. Data retained for 1 year.|
-|QUERY_HISTORY|Historical|45 minutes|Data retained for 1 year.|
-|REFERENTIAL_CONSTRAINTS|Object|2 hours||
-|REPLICATION_USAGE_HISTORY|Historical|3 hours|Data retained for 1 year.|
-|ROLES|Object|2 hours||
-|ROW_ACCESS_POLICIES|Object|2 hours||
-|SCHEMATA|Object|2 hours||
-|SEARCH_OPTIMIZATION_HISTORY|Historical|3 hours|Data retained for 1 year.|
-|SEQUENCES|Object|2 hours||
-|SERVERLESS_TASK_HISTORY|Historical|3 hours|Data retained for 1 year.|
-|SESSIONS|Historical|3 hours|Data retained for 1 year.|
-|STAGES|Object|2 hours||
-|STAGE_STORAGE_USAGE_HISTORY|Historical|2 hours|Data retained for 1 year.|
-|STORAGE_USAGE|Historical|2 hours|Combined usage across all database tables and internal stages. Data retained for 1 year.|
-|TABLES|Object|90 minutes||
-|TABLE_CONSTRAINTS|Object|2 hours||
-|TABLE_STORAGE_METRICS|Object|90 minutes|
-|TAG_REFERENCES|Object|2 hours||
-|TAGS|Object|2 hours||
-|TASK_HISTORY|Historical|45 minutes||
-|USERS|Object|2 hours||
-|VIEWS|Object|90 minutes|
-|WAREHOUSE_EVENTS_HISTORY|Historical|3 hours|Data retained for 1 year.|
-|WAREHOUSE_LOAD_HISTORY|Historical|3 hours|Data retained for 1 year.|
-|WAREHOUSE_METERING_HISTORY|Historical|3 hours|Data retained for 1 year.|
+|[DATA_TRANSFER_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/data_transfer_history.html)|Historical|2 hours|Data retained for 1 year.|
+|[FILE_FORMATS](https://docs.snowflake.com/en/sql-reference/account-usage/file_formats.html)|Object|2 hours||
+|[FUNCTIONS](https://docs.snowflake.com/en/sql-reference/account-usage/functions.html)|Object|2 hours||
+|[GRANTS_TO_ROLES](https://docs.snowflake.com/en/sql-reference/account-usage/grants_to_roles.html)|Object|2 hours||
+|[GRANTS_TO_USERS](https://docs.snowflake.com/en/sql-reference/account-usage/grants_to_users.html)|Object|2 hours||
+|[LOAD_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/load_history.html)|Historical|90 minutes [2]|Data retained for 1 year.||
+|[LOGIN_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/load_history.html)|Historical|2 hours|Data retained for 1 year.|
+|[MASKING_POLICIES](https://docs.snowflake.com/en/sql-reference/account-usage/masking_policies.html)|Object|2 hours||
+|[MATERIALIZED_VIEW_REFRESH_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/materialized_view_refresh_history.html)|Historical|3 hours|Data retained for 1 year.|
+|[METERING_DAILY_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/metering_daily_history.html)|Historical|3 hours|Data retained for 1 year.|
+|[METERING_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/metering_history.html)|Historical|3 hours|Data retained for 1 year.|
+|[OBJECT_DEPENDENCIES](https://docs.snowflake.com/en/sql-reference/account-usage/object_dependencies.html)|Historical|3 hours||
+|[PIPES](https://docs.snowflake.com/en/sql-reference/account-usage/pipes.html)|Object|2 hours||
+|[PIPE_USAGE_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/pipe_usage_history.html)|Historical|3 hours|Data retained for 1 year.||
+|[POLICY_REFERENCES](https://docs.snowflake.com/en/sql-reference/account-usage/policy_references.html)|Object|2 hours||
+|[QUERY_ACCELERATION_ELIGIBLE](https://docs.snowflake.com/en/sql-reference/account-usage/query_acceleration_eligible.html)|Historical|3 hours|Data retained for 1 year.|
+|[QUERY_ACCELERATION_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/query_acceleration_history.html)|Historical|3 hours|Available as part of the Query Acceleration Service preview. Data retained for 1 year.|
+|[QUERY_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html)|Historical|45 minutes|Data retained for 1 year.|
+|[REFERENTIAL_CONSTRAINTS](https://docs.snowflake.com/en/sql-reference/account-usage/referential_constraints.html)|Object|2 hours||
+|[REPLICATION_USAGE_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/replication_usage_history.html)|Historical|3 hours|Data retained for 1 year.|
+|[ROLES](https://docs.snowflake.com/en/sql-reference/account-usage/roles.html)|Object|2 hours||
+|[ROW_ACCESS_POLICIES](https://docs.snowflake.com/en/sql-reference/account-usage/row_access_policies.html)|Object|2 hours||
+|[SCHEMATA](https://docs.snowflake.com/en/sql-reference/account-usage/schemata.html)|Object|2 hours||
+|[SEARCH_OPTIMIZATION_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/search_optimization_history.html)|Historical|3 hours|Data retained for 1 year.|
+|[SEQUENCES](https://docs.snowflake.com/en/sql-reference/account-usage/sequences.html)|Object|2 hours||
+|[SERVERLESS_TASK_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/serverless_task_history.html)|Historical|3 hours|Data retained for 1 year.|
+|[SESSIONS](https://docs.snowflake.com/en/sql-reference/account-usage/sessions.html)|Historical|3 hours|Data retained for 1 year.|
+|[STAGES](https://docs.snowflake.com/en/sql-reference/account-usage/stages.html)|Object|2 hours||
+|[STAGE_STORAGE_USAGE_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/stage_storage_usage_history.html)|Historical|2 hours|Data retained for 1 year.|
+|[STORAGE_USAGE](https://docs.snowflake.com/en/sql-reference/account-usage/storage_usage.html)|Historical|2 hours|Combined usage across all database tables and internal stages. Data retained for 1 year.|
+|[TABLES](https://docs.snowflake.com/en/sql-reference/account-usage/tables.html)|Object|90 minutes||
+|[TABLE_CONSTRAINTS](https://docs.snowflake.com/en/sql-reference/account-usage/table_constraints.html)|Object|2 hours||
+|[TABLE_STORAGE_METRICS](https://docs.snowflake.com/en/sql-reference/account-usage/table_storage_metrics.html)|Object|90 minutes|
+|[TAG_REFERENCES](https://docs.snowflake.com/en/sql-reference/account-usage/tag_references.html)|Object|2 hours||
+|[TAGS](https://docs.snowflake.com/en/sql-reference/account-usage/tags.html)|Object|2 hours||
+|[TASK_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/task_history.html)|Historical|45 minutes||
+|[USERS](https://docs.snowflake.com/en/sql-reference/account-usage/users.html)|Object|2 hours||
+|[VIEWS](https://docs.snowflake.com/en/sql-reference/account-usage/views.html)|Object|90 minutes|
+|[WAREHOUSE_EVENTS_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/warehouse_events_history.html)|Historical|3 hours|Data retained for 1 year.|
+|[WAREHOUSE_LOAD_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/warehouse_load_history.html)|Historical|3 hours|Data retained for 1 year.|
+|[WAREHOUSE_METERING_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/warehouse_metering_history.html)|Historical|3 hours|Data retained for 1 year.|
 
 * Notes:
     * Latency is approximated.
@@ -116,17 +116,161 @@
 
 |TABLE FUNCTION|DATA RETENTION|NOTES|
 |--------------|:------------:|-----|
-|TAG_REFERENCES_WITH_LINEAGE|N/A|Results are only returned for the role that has access to the specified object.|
+|[TAG_REFERENCES_WITH_LINEAGE](https://docs.snowflake.com/en/sql-reference/functions/tag_references_with_lineage.html)|N/A|Results are only returned for the role that has access to the specified object.|
 
 <br>
 
-# READER_ACCOUNT_USAGE
+# READER_ACCOUNT_USAGE Views
 * READER_ACCOUNT_USAGE contains the following views:
 
 |VIEW|TYPE|LATENCY|NOTES|
 |---|:---:|---|---|
-|LOGIN_HISTORY|Historical|2 hours|Data retained for 1 year.|
-|QUERY_HISTORY|Historical|45 minutes|Data retained for 1 year.|
-|RESOURCE_MONITORS|Object|2 hours|
-|STORAGE_USAGE|Historical|2 hours|Combined usage across all database tables and internal stages. Data retained for 1 year.|
-|WAREHOUSE_METERING_HISTORY|Historical|3 hours|Data retained for 1 year.|
+|[LOGIN_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/login_history.html)|Historical|2 hours|Data retained for 1 year.|
+|[QUERY_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html)|Historical|45 minutes|Data retained for 1 year.|
+|[RESOURCE_MONITORS](https://docs.snowflake.com/en/sql-reference/account-usage/resource_monitors.html)|Object|2 hours|
+|[STORAGE_USAGE](https://docs.snowflake.com/en/sql-reference/account-usage/storage_usage.html)|Historical|2 hours|Combined usage across all database tables and internal stages. Data retained for 1 year.|
+|[WAREHOUSE_METERING_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/warehouse_metering_history.html)|Historical|3 hours|Data retained for 1 year.|
+
+<br>
+
+# Enabling Snowflake DB Usage for Other Roles
+* By default the SNOWFLAKE DB is available only to the AccountAdmin role. 
+* Use AccountAdmin role to grant the following data sharing privs to the desired roles.
+    * Makes use of <mark style="background-color: #89cff0">imported privileges</mark>.
+
+```sql
+use role accountadmin;
+
+grant imported privileges on database snowflake to role sysadmin;
+grant imported privileges on database snowflake to role customrole1;
+
+use role customrole1;
+
+select * from snowflake.account_usage.databases;
+```
+
+<br>
+
+# Querying the Account Usage Views 
+* Prerequisite schema set (previous examples grants apply)
+```sql
+use role accountadmin;
+
+use schema snowflake.account_usage;
+```
+<br>
+
+## User Login Metrics
+
+* Eg - Average number of seconds between failed login attempts by user (month-to-date)
+```sql
+select user_name,
+       count(*) as failed_logins,
+       avg(seconds_between_login_attempts) as average_seconds_between_login_attempts
+from (
+      select user_name,
+             timediff(seconds, event_timestamp, lead(event_timestamp)
+                 over(partition by user_name order by event_timestamp)) as seconds_between_login_attempts
+      from login_history
+      where event_timestamp > date_trunc(month, current_date)
+      and is_success = 'NO'
+     )
+group by 1
+order by 3;
+```
+* Eg - Failed logins by user (month-to-date):
+```sql
+select user_name,
+       sum(iff(is_success = 'NO', 1, 0)) as failed_logins,
+       count(*) as logins,
+       sum(iff(is_success = 'NO', 1, 0)) / nullif(count(*), 0) as login_failure_rate
+from login_history
+where event_timestamp > date_trunc(month, current_date)
+group by 1
+order by 4 desc;
+```
+<br>
+
+## Warehouse Performance 
+* This query calculates virtual warehouse performance metrics such as throughput and latency for 15-minute time intervals over the course of one day.
+* Replace current_warehouse() with desired warehouse.
+```sql
+with
+params as (
+select
+    current_warehouse() as warehouse_name,
+    '2021-11-01' as time_from,
+    '2021-11-02' as time_to
+),
+
+jobs as (
+select
+    query_id,
+    time_slice(start_time::timestamp_ntz, 15, 'minute','start') as interval_start,
+    qh.warehouse_name,
+    database_name,
+    query_type,
+    total_elapsed_time,
+    compilation_time as compilation_and_scheduling_time,
+    (queued_provisioning_time + queued_repair_time + queued_overload_time) as queued_time,
+    transaction_blocked_time,
+    execution_time
+from snowflake.account_usage.query_history qh, params
+where
+    qh.warehouse_name = params.warehouse_name
+and start_time >= params.time_from
+and start_time <= params.time_to
+and execution_status = 'SUCCESS'
+and query_type in ('SELECT','UPDATE','INSERT','MERGE','DELETE')
+),
+
+interval_stats as (
+select
+    query_type,
+    interval_start,
+    count(distinct query_id) as numjobs,
+    median(total_elapsed_time)/1000 as p50_total_duration,
+    (percentile_cont(0.95) within group (order by total_elapsed_time))/1000 as p95_total_duration,
+    sum(total_elapsed_time)/1000 as sum_total_duration,
+    sum(compilation_and_scheduling_time)/1000 as sum_compilation_and_scheduling_time,
+    sum(queued_time)/1000 as sum_queued_time,
+    sum(transaction_blocked_time)/1000 as sum_transaction_blocked_time,
+    sum(execution_time)/1000 as sum_execution_time,
+    round(sum_compilation_and_scheduling_time/sum_total_duration,2) as compilation_and_scheduling_ratio,
+    round(sum_queued_time/sum_total_duration,2) as queued_ratio,
+    round(sum_transaction_blocked_time/sum_total_duration,2) as blocked_ratio,
+    round(sum_execution_time/sum_total_duration,2) as execution_ratio,
+    round(sum_total_duration/numjobs,2) as total_duration_perjob,
+    round(sum_compilation_and_scheduling_time/numjobs,2) as compilation_and_scheduling_perjob,
+    round(sum_queued_time/numjobs,2) as queued_perjob,
+    round(sum_transaction_blocked_time/numjobs,2) as blocked_perjob,
+    round(sum_execution_time/numjobs,2) as execution_perjob
+from jobs
+group by 1,2
+order by 1,2
+)
+select * from interval_stats;
+```
+<br>
+
+# Warehouse Credit Usage
+* Eg - Credits used by each warehouse in your account (month-to-date):
+```sql
+select warehouse_name,
+       sum(credits_used) as total_credits_used
+from warehouse_metering_history
+where start_time >= date_trunc(month, current_date)
+group by 1
+order by 2 desc;
+```
+
+* Eg - Credits used over time by each warehouse in your account (month-to-date):
+```sql
+select start_time::date as usage_date,
+       warehouse_name,
+       sum(credits_used) as total_credits_used
+from warehouse_metering_history
+where start_time >= date_trunc(month, current_date)
+group by 1,2
+order by 2,1;
+```

@@ -33,7 +33,7 @@ How to configure access control for securable objects in your account
     * Use <mark style="background-color: #89cff0">custom role</mark> or lower level admin role - <mark style="background-color: #89cff0">SYSADMIN</mark>.
     * Ensure email address specified. 
 * EG:
-    ```
+    ```sql
     grant role accountadmin, sysadmin to user user2;
 
     alter user user2 set email='user2@domain.com', default_role=sysadmin;
@@ -61,7 +61,7 @@ How to configure access control for securable objects in your account
 ## Create a role 
 * Only USERADMIN or higher (or another role with CREATE ROLE privs) can create roles.
 * Eg:
-```
+```sql
 create role r1
    comment = 'This role has all privileges on schema_1';
 ```
@@ -70,7 +70,7 @@ create role r1
 * Only role with <mark style="background-color: #89cff0">global</mark> MANAGE GRANTS privs or higher role can execute command.
 * By default only SECURITYADMIN role has MANAGE GRANTS privs
 * Eg:
-```
+```sql
 grant usage
   on warehouse w1
   to role r1;
@@ -92,7 +92,7 @@ grant select
 * Only role with MANAGE GRANTS priv or higher can execute command.
 * By default only the SECURITYADMIN has privs.
 * Eg:
-```
+```sql
 grant role r1
    to user smith;
 ```
@@ -100,7 +100,7 @@ grant role r1
 * Optionally you can set new custom role as the default role for the user. 
     * Next time the user logs in the default role will automatically activate in the session
 * Eg:
-```
+```sql
 alter user smith
    set default_role = r1;
 ```
@@ -115,7 +115,7 @@ alter user smith
 |USAGE|Warehouse|To query an object (e.g. a table or view), a role must have the USAGE privilege on a warehouse. The warehouse provides the compute resources to execute the query.|
 |SELECT|Table|To operate on any object in a schema, a role must have the USAGE privilege on the container database and schema.|
 * The grant statements are:
-```
+```sql
 grant usage
   on database d1
   to role read_only;
@@ -153,7 +153,7 @@ grant usage
 ## Grant a role to Another Role
 * As easy as assigning the lower level role to a higher level one.
 * Eg:
-```
+```sql
 grant role r1
    to role sysadmin;
 ```
@@ -176,7 +176,7 @@ grant role r1
 * Eg of the SHOW GRANTS command:
 ```show grants on schema <database_name>.<schema_name>;```
 * SHOW GRANTS command can also be used to view current set of privs granted to a role or the current set of roles granted to a user.
-* ```
+* ```sql
   show grants to role <role_name>;
   show grants to user <user_name>;
   ```
@@ -200,14 +200,14 @@ grant role r1
 ## Defining Future Grants on DB or Schema Objects
 * Differentiation between schema and DB object levels for future grants 
 * Eg - future grant at DB level
-```
+```sql
 use role accountadmin;
 
 -- Grant the USAGE privilege on all future schemas in a database to role r1
 grant usage on future schemas in database d1 to role r1;
 ```
 * Eg - future grant on schema level
-```
+```sql
 use role accountadmin;
 
 -- Grant the SELECT privilege on all future tables in a schema to role r1
@@ -223,7 +223,7 @@ grant select,insert on future tables in schema d1.s1 to role r1;
 * Future grants only <mark style="background-color: #89cff0">pertain to new objects</mark>.
 * <mark style="background-color: #89cff0">Explicitly</mark> grant the desired privs to a role on existing objects.
 * Eg:
-```
+```sql
 use role accountadmin;
 
 -- Grant the USAGE privilege on all existing schemas in a database to role r1
@@ -240,7 +240,7 @@ grant select on all tables in schema d1.s1 to role r1
 * Revoking future grants on DB objects only removes privs granted on the future objects of a specified type rather than existing objects. 
 * Any privs granted on existing objects are retained. 
 * Eg:
-```
+```sql
 use role accountadmin;
 
 -- Revoke the USAGE privilege on all existing schemas in a database from role r1
