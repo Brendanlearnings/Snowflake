@@ -1,13 +1,13 @@
 # Topic quick links 
-* [Account Usage](#account-usage)
+* [Account Usage Overview](#account-usage-overview)
 * [Overview of Account Usage Schemas](#overview-of-account-usage-schemas)
-    * [ACCOUNT_USAGE](#accountusage)
-    * [READER_ACCOUNT_USAGE](#readeraccountusage)
+    * [ACCOUNT USAGE](#account-usage)
+    * [READER ACCOUNT USAGE](#reader-account-usage)
 * [Differences between Account Usage and Information Schema](#differences-between-account-usage-and-information-schema)
     * [Dropped Object Records](#dropped-object-records)
     * [Data Latency](#data-latency)
     * [Historical Data Retention](#historical-data-retention)
-* [ACCOUNT_USAGE Views](#accountusage-views)
+* [ACCOUNT_USAGE Views](#account-usage-views)
     * [Account Usage Table Functions](#account-usage-table-functions)
 * [READER_ACCOUNT_USAGE Views](#readeraccountusage-views)
 * [Enabling Snowflake DB Usage for Other Roles](#enabling-snowflake-db-usage-for-other-roles)
@@ -22,14 +22,14 @@
 
 
 
-# Account Usage 
+# Account Usage Overview
 * In SF DB
     * ACCOUNT_USAGE & READER_ACCOUNT_USAGE schemas enable querying object metadata, historical usage data for all reader accounts associated with 'main' account.
 
 <br>
 
 # Overview of Account Usage Schemas 
-## ACCOUNT_USAGE
+## ACCOUNT USAGE
 * Views display <mark style="background-color: #89cff0">object metadata</mark> and <mark style="background-color: #89cff0">usage metrics</mark> for your **account**.
 * Mirror information schema but with the following difference:
     * Records the dropped objects included in each view.
@@ -38,7 +38,7 @@
 
 <br>
 
-## READER_ACCOUNT_USAGE
+## READER ACCOUNT USAGE
 * Views display <mark style="background-color: #89cff0">object metadata</mark> of the ACCOUNT_USAGE views that apply to **reader accounts**.
 * <mark style="background-color: #89cff0">RESOURCE_MONITOR</mark> view only available here.
 * Small subset of ACCOUNT_USAGE view 
@@ -77,7 +77,7 @@
 
 <br>
 
-# ACCOUNT_USAGE Views
+# ACCOUNT USAGE Views
 |VIEW|TYPE|LATENCY|NOTES|
 |---|:---:|:---:|---|
 |[ACCESS_HISTORY](https://docs.snowflake.com/en/sql-reference/account-usage/access_history.html)|Historical|3 hours|Data retained for 1 year.|
