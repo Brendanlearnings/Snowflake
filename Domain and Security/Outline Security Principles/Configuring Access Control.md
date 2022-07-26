@@ -1,3 +1,24 @@
+# Topic quick links
+* [Account Administration](#account-administration)
+    * [Designating Additional Users as Account Administrators](#designating-additional-users-as-account-administrators)
+    * [Enabling MFA for each Account Administrator](#enabling-mfa-for-each-account-administrator)
+* [Creating Custom Roles](#creating-custom-roles)
+    * [Create a role](#create-a-role)
+    * [Grant Privileges to the Role](#grant-privileges-to-the-role)
+    * [Grant Role to Users](#grant-role-to-users)
+* [Creating Custom Read-Only Roles](#creating-custom-read-only-roles)
+* [Creating a Role Hierarchy](#creating-a-role-hierarchy)
+    * [Grant a role to Another Role](#grant-a-role-to-another-role)
+* [Viewing Granted Privileges](#viewing-granted-privileges)
+* [Assigning Future Grants on Objects](#assigning-future-grants-on-objects)
+    * [Considerations](#considerations)
+    * [Defining Future Grants on DB or Schema Objects](#defining-future-grants-on-db-or-schema-objects)
+* [Defining Future Grants on Existing DB or Schema Objects](#defining-future-grants-on-existing-db-or-schema-objects)
+    * [Revoking Future Grants on DB or Schema Objects](#revoking-future-grants-on-db-or-schema-objects)
+    * [Managing Future Grants Using the Web Interface](#managing-future-grants-using-the-web-interface)
+    * [Restrictions and limitations](#restrictions-and-limitations)
+* [Enabling Non-Account Admin to Monitor Usage and Billing History in Classic Web Interface](#enabling-non-account-admin-to-monitor-usage-and-billing-history-in-classic-web-interface)
+
 # Configuring Access Control 
 How to configure access control for securable objects in your account
 
