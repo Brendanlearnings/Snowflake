@@ -2,7 +2,7 @@
 # All Privileges  
 
 
-|   PRIVILEDGE                                                                  | OBJECT TYPE                                                             | DESCRIPTION |
+|   PRIVILEGE                                                                  | OBJECT TYPE                                                             | DESCRIPTION |
 |-------------------------------------------------------------------------------|:-------------------------------------------------------------------------:|-------------|
 | ALL [ PRIVILEGES ]                                                            | All                                                                     | Grants all the privileges for the specified object type.|
 | APPLY MASKING POLICY                                                        | Global                                                                  | Grants the ability to set a Column-level Security masking policy on a table or view column and to set a masking policy on a tag. This global privilege also allows executing the DESCRIBE operation on tables and views. |
@@ -37,7 +37,7 @@
 # Global Privileges
 
 
-|   PRIVILEDGE                                                                  | USAGE                                                              | NOTES |
+|   PRIVILEGE                                                                  | USAGE                                                              | NOTES |
 |-------------------------------------------------------------------------------|:-----------------------------------------------------------------------:|-------------|
 | APPLY MASKING POLICY | Grants ability to set a Column-level Security masking policy on a table or view column and to set a masking policy on a tag. | This global privilege also allows executing the DESCRIBE operation on tables and views.| 
 |APPLY ROW ACCESS POLICY| Grants the ability to add and drop a row access policy on a table or view. | This global privilege also allows executing the DESCRIBE operation on tables and views.|
@@ -65,7 +65,7 @@
 
 # User Privileges
 
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |MONITOR|Grants ability to view the login history for the user.|
 |OWNERSHIP|Grants full control over a user/role. Only a single role can hold this privilege on a specific object at a time.|
@@ -75,14 +75,14 @@
 
  # Role Privileges 
 
- |   PRIVILEDGE                                                                  | USAGE                                                             |
+ |   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 | OWNERSHIP|Grants full control over a user/role. Only a single role can hold this privilege on a specific object at a time. Note that the owner role does not inherit any permissions granted to the owned role. To inherit permissions from a role, that role must be granted to another role, creating a parent-child relationship in a role hierarchy.|
 
  # Resource Monitor Privileges 
 
 
- |   PRIVILEDGE                                                                  | USAGE                                                             |
+ |   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |MODIFY|Enables altering any properties of a resource monitor, such as changing the monthly credit quota.|MONITOR|Enables viewing a resource monitor.|
 |ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on the resource monitor.|
@@ -90,7 +90,7 @@
 <br>
 
 # Virtual Warehouse Privileges 
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |MODIFY|Enables altering any properties of a warehouse, including changing its size. Required to assign a warehouse to a resource monitor. Note that only the ACCOUNTADMIN role can assign warehouses to resource monitors.|
 |MONITOR|Enables viewing current and past queries executed on a warehouse as well as usage statistics on that warehouse.|OPERATE|Enables changing the state of a warehouse (stop, start, suspend, resume). In addition, enables viewing current and past queries executed on a warehouse and aborting any executing queries.|
@@ -106,7 +106,7 @@ None
 <br>
 
 # Integration Privileges 
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |USAGE|Enables referencing the storage integration when creating a stage (using CREATE STAGE) or modifying a stage (using ALTER STAGE).|
 USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if this privilege is granted to the client or user. Configure the External OAuth security integration to use the EXTERNAL_OAUTH_ANY_ROLE_MODE parameter using CREATE SECURITY INTEGRATION (External OAuth) or ALTER SECURITY INTEGRATION (External OAuth).|
@@ -116,28 +116,28 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # Network Policy Privileges
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |OWNERSHIP|Grants full control over the network policy. Only a single role can hold this privilege on a specific object at a time.|
 
 <br>
 
 # Session Policy Privileges 
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |OWNERSHIP|Transfers ownership of a session policy, which grants full control over the session policy. Required to alter most properties of a session policy.|
 
 <br>
 
 # Data Exchange Privileges 
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |IMPORTED PRIVILEGES|Enables roles other than the owning role to manage a Snowflake Marketplace or Data Exchange.|
 
 <br>
 
 # Data Exchange Listing Privileges
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |MODIFY|Enables roles other than the owning role to modify a Snowflake Marketplace or Data Exchange listing.|
 |USAGE|Enables viewing a Snowflake Marketplace or Data Exchange listing.|
@@ -147,7 +147,7 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # Database Privileges 
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |MODIFY|Enables altering any settings of a database.|
 |MONITOR|Enables performing the DESCRIBE command on the database.|
@@ -165,7 +165,7 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # Schema Privileges
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |MODIFY|Enables altering any settings of a schema.|
 |MONITOR|Enables performing the DESCRIBE command on the schema.|
@@ -201,15 +201,15 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # Table Privileges 
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |SELECT|Enables executing a SELECT statement on a table.|
-|INSERT|Enables executing an INSERT command on a table. Also enables using the ALTER TABLE command with a RECLUSTER clause to manually recluster a table with a clustering key.|
+|INSERT|Enables executing an INSERT command on a table. Also enables using the ALTER TABLE command with a RE-CLUSTER clause to manually re-cluster a table with a clustering key.|
 |UPDATE|Enables executing an UPDATE command on a table.|
 |TRUNCATE|Enables executing a TRUNCATE TABLE command on a table.|
 |DELETE|Enables executing a DELETE command on a table.|
 |REFERENCES|Enables referencing a table as the unique/primary key table for a foreign key constraint. Also enables viewing the structure of a table (but not the data) via the DESCRIBE or SHOW command or by querying the Information Schema.|
-|OWNERSHIP|Grants full control over the table. Required to alter most properties a table, with the exception of reclustering. Only a single role can hold this privilege on a specific object at a time.|
+|OWNERSHIP|Grants full control over the table. Required to alter most properties a table, with the exception of re-clustering. Only a single role can hold this privilege on a specific object at a time.|
 |ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on a table.|
 
 ### Notes:
@@ -218,7 +218,7 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # External Table Privileges
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |SELECT|Enables executing a SELECT statement on an external table.|
 |REFERENCES|Enables viewing the structure of an external table (but not the data) via the DESCRIBE or SHOW command or by querying the Information Schema.|
@@ -231,7 +231,7 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # View Privileges 
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |SELECT|Enables executing a SELECT statement on a view.|
 |REFERENCES|Enables viewing the structure of a view (but not the data) via the DESCRIBE or SHOW command or by querying the Information Schema.|
@@ -246,7 +246,7 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # Stage Privileges
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |USAGE|Enables using an external stage object in a SQL statement; not applicable to internal stages.|
 |READ|Enables performing any operations that require reading from an internal stage ([GET](https://docs.snowflake.com/en/sql-reference/sql/get.html), [LIST](https://docs.snowflake.com/en/sql-reference/sql/list.html), [COPY INTO table](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html), etc.); not applicable to external stages.|
@@ -264,7 +264,7 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # File format Privileges
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |USAGE|Enables using a file format in a SQL statement.|
 |OWNERSHIP|Grants full control over the file format. Required to alter a file format. Only a single role can hold this privilege on a specific object at a time.|
@@ -276,7 +276,7 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # Pipe Privileges
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |MONITOR|Enables viewing details for the pipe (using DESCRIBE PIPE or SHOW PIPES).|
 |OPERATE|Enables viewing details for the pipe (using DESCRIBE PIPE or SHOW PIPES), pausing or resuming the pipe, and refreshing the pipe.|
@@ -289,7 +289,7 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # Stream Privileges
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |SELECT|Enables executing a SELECT statement on a stream.|
 |OWNERSHIP|Grants full control over the stream. Only a single role can hold this privilege on a specific object at a time.|
@@ -298,7 +298,7 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # Task Privileges 
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |MONITOR|Enables viewing details for the task (using DESCRIBE TASK or SHOW TASKS).|
 |OPERATE|Enables viewing details for the task (using DESCRIBE TASK or SHOW TASKS) and resuming or suspending the task.|
@@ -308,7 +308,7 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # Masking Policy Privileges 
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |APPLY|Enables executing the unset and set operations for a masking policy on a column.Note that granting the global APPLY MASKING POLICY privilege (i.e. APPLY MASKING POLICY on ACCOUNT) enables executing the DESCRIBE operation on tables and views.For syntax examples, see [Masking Policy Privileges](https://docs.snowflake.com/en/user-guide/security-column-intro.html#label-security-column-privileges-masking-policies).|
 |OWNERSHIP|Grants full control over the masking policy. Required to alter most properties of a masking policy. Only a single role can hold this privilege on a specific object at a time.|
@@ -318,7 +318,7 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # Row Access Policy Privileges
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |APPLY|Enables executing the add and drop operations for the row access policy on a table or view. Note that granting the global APPLY MASKING POLICY privilege (i.e. APPLY ROW ACCESS POLICY on ACCOUNT) enables executing the DESCRIBE operation on tables and views. For syntax examples, see [Summary of DDL Commands, Operations, and Privileges](https://docs.snowflake.com/en/user-guide/security-row-intro.html#label-security-row-privilege-command-summary).|
 |OWNERSHIP|Grants full control over the row access policy. Required to alter most properties of a row access policy. Only a single role can hold this privilege on a specific object at a time.|
@@ -329,7 +329,7 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # Tag Privileges
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |APPLY|Enables executing the add and drop operations for the tag on a Snowflake object.|
 |OWNERSHIP|Grants full control over the tag. Required to alter most properties of a tag. Only a single role can hold this privilege on a specific object at a time.|
@@ -341,7 +341,7 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # Sequence Privileges 
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |USAGE|Enables using a sequence in a SQL statement.|
 |ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on the sequence.|
@@ -352,7 +352,7 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # Stored Procedure Privileges
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |USAGE|Enables calling a stored procedure.|
 |ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on the stored procedure.|
@@ -365,7 +365,7 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 <br>
 
 # User Defined Function (UDF) and External Function Privileges
-|   PRIVILEDGE                                                                  | USAGE                                                             |
+|   PRIVILEGE                                                                  | USAGE                                                             |
 |-------------------------------------------------------------------------------|-------------|
 |USAGE|Enables calling a UDF or external function.|
 |ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on the UDF or external function.|
