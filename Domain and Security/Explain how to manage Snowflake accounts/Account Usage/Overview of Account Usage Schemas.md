@@ -1,3 +1,27 @@
+# Topic quick links 
+* [Account Usage](#account-usage)
+* [Overview of Account Usage Schemas](#overview-of-account-usage-schemas)
+    * [ACCOUNT_USAGE](#accountusage)
+    * [READER_ACCOUNT_USAGE](#readeraccountusage)
+* [Differences between Account Usage and Information Schema](#differences-between-account-usage-and-information-schema)
+    * [Dropped Object Records](#dropped-object-records)
+    * [Data Latency](#data-latency)
+    * [Historical Data Retention](#historical-data-retention)
+* [ACCOUNT_USAGE Views](#accountusage-views)
+    * [Account Usage Table Functions](#account-usage-table-functions)
+* [READER_ACCOUNT_USAGE Views](#readeraccountusage-views)
+* [Enabling Snowflake DB Usage for Other Roles](#enabling-snowflake-db-usage-for-other-roles)
+* [Querying the Account Usage Views](#querying-the-account-usage-views)
+    * [User Login Metrics](#user-login-metrics)
+    * [Warehouse Performance](#warehouse-performance)
+    * [Warehouse Credit Usage](#warehouse-credit-usage)
+    * [Data Storage Usage](#data-storage-usage)
+    * [User Query Totals and Execution Times](#user-query-totals-and-execution-times)
+    * [Obtain a Query Count for Every Login Event](#obtain-a-query-count-for-every-login-event)
+
+
+
+
 # Account Usage 
 * In SF DB
     * ACCOUNT_USAGE & READER_ACCOUNT_USAGE schemas enable querying object metadata, historical usage data for all reader accounts associated with 'main' account.
@@ -253,7 +277,7 @@ select * from interval_stats;
 ```
 <br>
 
-# Warehouse Credit Usage
+## Warehouse Credit Usage
 * Eg - Credits used by each warehouse in your account (month-to-date):
 ```sql
 select warehouse_name,
@@ -273,4 +297,71 @@ from warehouse_metering_history
 where start_time >= date_trunc(month, current_date)
 group by 1,2
 order by 2,1;
+```
+<br>
+
+## Data Storage Usage 
+* Eg - Billable terabytes stored in your account over time:
+```sql
+select date_trunc(month, usage_date) as usage_month,
+       avg(storage_bytes + stage_bytes + failsafe_bytes) / power(1024, 4) as billable_tb
+from storage_usage
+group by 1
+order by 1;
+```
+<br>
+
+## User Query Totals and Execution Times
+* Eg - Total jobs executed in your account (month-to-date):
+```sql
+select count(*) as number_of_jobs
+from query_history
+where start_time >= date_trunc(month, current_date);
+```
+* Total jobs executed by each warehouse in your account (month-to-date):
+```sql
+select warehouse_name,
+       count(*) as number_of_jobs
+from query_history
+where start_time >= date_trunc(month, current_date)
+group by 1
+order by 2 desc;
+```
+* Average query execution time by user (month-to-date):
+```sql
+select user_name,
+       avg(execution_time) as average_execution_time
+from query_history
+where start_time >= date_trunc(month, current_date)
+group by 1
+order by 2 desc;
+```
+* Average query execution time by query type and warehouse size (month-to-date):
+```sql
+select query_type,
+       warehouse_size,
+       avg(execution_time) as average_execution_time
+from query_history
+where start_time >= date_trunc(month, current_date)
+group by 1,2
+order by 3 desc;
+```
+<br>
+
+## Obtain a Query Count for Every Login Event
+* Eg - query count for each user login event.
+```sql
+select l.user_name,
+       l.event_timestamp as login_time,
+       l.client_ip,
+       l.reported_client_type,
+       l.first_authentication_factor,
+       l.second_authentication_factor,
+       count(q.query_id)
+from snowflake.account_usage.login_history l
+join snowflake.account_usage.sessions s on l.event_id = s.login_event_id
+join snowflake.account_usage.query_history q on q.session_id = s.session_id
+group by 1,2,3,4,5,6
+order by l.user_name
+;
 ```
