@@ -7,9 +7,9 @@
     * [Dropped Object Records](#dropped-object-records)
     * [Data Latency](#data-latency)
     * [Historical Data Retention](#historical-data-retention)
-* [ACCOUNT_USAGE Views](#account-usage-views)
+* [ACCOUNT USAGE Views](#account-usage-views)
     * [Account Usage Table Functions](#account-usage-table-functions)
-* [READER_ACCOUNT_USAGE Views](#readeraccountusage-views)
+* [READER ACCOUNT USAGE Views](#reader-account-usage-views)
 * [Enabling Snowflake DB Usage for Other Roles](#enabling-snowflake-db-usage-for-other-roles)
 * [Querying the Account Usage Views](#querying-the-account-usage-views)
     * [User Login Metrics](#user-login-metrics)
@@ -144,7 +144,7 @@
 
 <br>
 
-# READER_ACCOUNT_USAGE Views
+# READER ACCOUNT USAGE Views
 * READER_ACCOUNT_USAGE contains the following views:
 
 |VIEW|TYPE|LATENCY|NOTES|
