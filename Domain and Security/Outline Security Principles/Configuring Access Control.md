@@ -169,4 +169,88 @@ grant role r1
 
 ## Considerations 
 * Future grants defined for object at DB level apply to all objects of that type created in the future. 
-* Must define future grant on each object type (schema, tables, views, streams, etc.) <mark style="background-color: #89cff0">individually</mark>
+* Must define future grant on each object type (schema, tables, views, streams, etc.) <mark style="background-color: #89cff0">individually</mark>.
+* Privs defined by future grants automatically granted at object creation time.
+* Schema level grants take <mark style="background-color: #89cff0">precedence</mark> over DB level grants, i.e. grants at schema level cause DB level grants to be ignored. 
+* DB level grants apply to both regular and managed access schemas.
+
+<br>
+
+## Defining Future Grants on DB or Schema Objects
+* Differentiation between schema and DB object levels for future grants 
+* Eg - future grant at DB level
+```
+use role accountadmin;
+
+-- Grant the USAGE privilege on all future schemas in a database to role r1
+grant usage on future schemas in database d1 to role r1;
+```
+* Eg - future grant on schema level
+```
+use role accountadmin;
+
+-- Grant the SELECT privilege on all future tables in a schema to role r1
+grant select on future tables in schema d1.s1 to role r1;
+
+-- Grants the SELECT and INSERT privileges on all future tables in a schema to r1
+grant select,insert on future tables in schema d1.s1 to role r1;
+```
+
+<br>
+
+# Defining Future Grants on Existing DB or Schema Objects
+* Future grants only <mark style="background-color: #89cff0">pertain to new objects</mark>.
+* <mark style="background-color: #89cff0">Explicitly</mark> grant the desired privs to a role on existing objects.
+* Eg:
+```
+use role accountadmin;
+
+-- Grant the USAGE privilege on all existing schemas in a database to role r1
+grant usage on all schemas in database d1 to role r1;
+
+-- Grant the SELECT privilege on all existing tables in a schema to role r1
+grant select on all tables in schema d1.s1 to role r1
+```
+
+<br>
+
+## Revoking Future Grants on DB or Schema Objects
+* Future grants can be revoked through using the ```REVOKE <privileges> … FROM ROLE``` command with the future keyword. 
+* Revoking future grants on DB objects only removes privs granted on the future objects of a specified type rather than existing objects. 
+* Any privs granted on existing objects are retained. 
+* Eg:
+```
+use role accountadmin;
+
+-- Revoke the USAGE privilege on all existing schemas in a database from role r1
+revoke usage on all schemas in database d1 from role r1;
+
+-- Revoke the SELECT and INSERT privileges on tables in a schema from the role r1
+revoke select,insert on future tables in schema d1.s1 from role r1;
+```
+
+<br>
+
+## Managing Future Grants Using the Web Interface 
+* Please refer to [link](https://docs.snowflake.com/en/user-guide/security-access-control-configure.html#managing-future-grants-using-the-web-interface) to see explanation. 
+
+## Restrictions and limitations 
+* For future grants on DB & Schema level.
+    * <mark style="background-color: #89cff0">Not supported</mark> for:
+        * Data Sharing
+        * Data replication 
+    * Future grants are supported on named stages with the following restrictions:
+        * WRITE privs cannot be specified without the READ privs.
+        * READ priv cannot be revoked if the WRITE priv is present.
+        * Internal stages - only future grants with the READ and WRITE privs are materialized.
+        * External stage - only future grants with the USAGE privs are materialized. 
+    * Future grants are <mark style="background-color: #89cff0">not</mark> applied when renaming or swapping a table.
+    * No more than one future grants of OWNERSHIP priv is allowed on each securable object type. 
+    * DB level future grants of OWNERSHIP privs on the objects of managed access schemas in the db are not affected. 
+    * When DB cloned - schemas in DB copy the future privs from the source schemas. 
+        * Maintains consistency with regular object grants - grants of the source object (i.e. DB) are not copied to the clone, but grant on all children objects (i.e. schemas in db) are copied to the clone. 
+
+<br>
+
+# Enabling Non-Account Admin to Monitor Usage and Billing History in Classic Web Interface 
+* Please refer to [link](https://docs.snowflake.com/en/user-guide/security-access-control-configure.html#enabling-non-account-administrators-to-monitor-usage-and-billing-history-in-the-classic-web-interface) for instructions on using Web interface. 
