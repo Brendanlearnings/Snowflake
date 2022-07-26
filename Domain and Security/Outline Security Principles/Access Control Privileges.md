@@ -49,7 +49,8 @@
 | MANAGE GRANTS | Enables granting or revoking privileges on objects for which the role is not the owner. | Must be granted by the SECURITYADMIN role (or higher).| 
 | CREATE DATA EXCHANGE LISTING | Enables creating a new Data Exchange listing. | Must be granted by the ACCOUNTADMIN role. |
 | CREATE INTEGRATION | Enables creating a new notification, security, or storage integration. | Must be granted by the ACCOUNTADMIN role.|
-|CREATE NETWORK POLICY|Enables creating a new network policy.|| 
+|CREATE NETWORK POLICY|Enables creating a new network policy.|
+| 
 |CREATE SHARE|Enables a data provider to create a new share. For more details, see Enabling non-ACCOUNTADMIN Roles to Perform Data Sharing Tasks.|Must be granted by the ACCOUNTADMIN role.|
 |CREATE WAREHOUSE|Enables creating a new virtual warehouse.|
 |EXECUTE MANAGED TASK|Grants ability to create tasks that rely on Snowflake-managed compute resources (serverless compute model). Only required for serverless tasks. The role that has the OWNERSHIP privilege on a task must have both the EXECUTE MANAGED TASK and the EXECUTE TASK privilege for the task to run.|Must be granted by the ACCOUNTADMIN role.|
@@ -196,3 +197,182 @@ USE_ANY_ROLE|Allows the External OAuth client or user to switch roles only if th
 * Changing the properties of a schema, including comments, requires the OWNERSHIP privilege for the database.
 
 * Operating on a schema also requires the USAGE privilege on the parent database.
+
+<br>
+
+# Table Privileges 
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|SELECT|Enables executing a SELECT statement on a table.|
+|INSERT|Enables executing an INSERT command on a table. Also enables using the ALTER TABLE command with a RECLUSTER clause to manually recluster a table with a clustering key.|
+|UPDATE|Enables executing an UPDATE command on a table.|
+|TRUNCATE|Enables executing a TRUNCATE TABLE command on a table.|
+|DELETE|Enables executing a DELETE command on a table.|
+|REFERENCES|Enables referencing a table as the unique/primary key table for a foreign key constraint. Also enables viewing the structure of a table (but not the data) via the DESCRIBE or SHOW command or by querying the Information Schema.|
+|OWNERSHIP|Grants full control over the table. Required to alter most properties a table, with the exception of reclustering. Only a single role can hold this privilege on a specific object at a time.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on a table.|
+
+### Notes:
+* Operating on a table also requires the USAGE privilege on the parent database and schema.
+
+<br>
+
+# External Table Privileges
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|SELECT|Enables executing a SELECT statement on an external table.|
+|REFERENCES|Enables viewing the structure of an external table (but not the data) via the DESCRIBE or SHOW command or by querying the Information Schema.|
+|OWNERSHIP|Grants full control over the external table; required to refresh an external table. Only a single role can hold this privilege on a specific object at a time.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on an external table.|
+
+### Notes:
+* Operating on a external table also requires the USAGE privilege on the parent database and schema.
+
+<br>
+
+# View Privileges 
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|SELECT|Enables executing a SELECT statement on a view.|
+|REFERENCES|Enables viewing the structure of a view (but not the data) via the DESCRIBE or SHOW command or by querying the Information Schema.|
+|OWNERSHIP|Grants full control over the view. Required to alter a view. Only a single role can hold this privilege on a specific object at a time.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on a view.|
+
+### Notes:
+* A user who has SELECT privilege on a view **does not** also need SELECT privilege on the tables that the view uses. This means that you can use a view to give a role access to only a subset of a table. For example, you can create a view that accesses medical billing information but not medical diagnosis information in the same table, and you can then grant privileges on that view to a custom ACCOUNTANT role so that accountants can look at the billing information without seeing the patient diagnoses.
+
+* Operating on a view also requires the USAGE privilege on the parent database and schema.
+
+<br>
+
+# Stage Privileges
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|USAGE|Enables using an external stage object in a SQL statement; not applicable to internal stages.|
+|READ|Enables performing any operations that require reading from an internal stage ([GET](https://docs.snowflake.com/en/sql-reference/sql/get.html), [LIST](https://docs.snowflake.com/en/sql-reference/sql/list.html), [COPY INTO table](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html), etc.); not applicable to external stages.|
+|WRITE|Enables performing any operations that require writing to an internal stage ([PUT](https://docs.snowflake.com/en/sql-reference/sql/put.html), [REMOVE](https://docs.snowflake.com/en/sql-reference/sql/remove.html), [COPY INTO location](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html), etc.); not applicable for external stages.|
+|OWNERSHIP|Grants full control over the stage. Only a single role can hold this privilege on a specific object at a time.|
+|ALL [ PRIVILEGES ]|Grants all applicable privileges, except OWNERSHIP, on the stage (internal or external).|
+
+### Notes:
+* When granting both the READ and WRITE privileges for an internal stage, the READ privilege must be granted before or at the same time as the WRITE privilege.
+
+* When revoking both the READ and WRITE privileges for an internal stage, the WRITE privilege must be revoked before or at the same time as the READ privilege.
+
+* Operating on a stage also requires the USAGE privilege on the parent database and schema.
+
+<br>
+
+# File format Privileges
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|USAGE|Enables using a file format in a SQL statement.|
+|OWNERSHIP|Grants full control over the file format. Required to alter a file format. Only a single role can hold this privilege on a specific object at a time.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on the file format.|
+
+### Notes:
+* Operating on file formats also requires the USAGE privilege on the parent database and schema.
+
+<br>
+
+# Pipe Privileges
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|MONITOR|Enables viewing details for the pipe (using DESCRIBE PIPE or SHOW PIPES).|
+|OPERATE|Enables viewing details for the pipe (using DESCRIBE PIPE or SHOW PIPES), pausing or resuming the pipe, and refreshing the pipe.|
+|OWNERSHIP|Grants full control over the pipe. Only a single role can hold this privilege on a specific object at a time.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on the pipe.|
+
+### Notes:
+* Operating on pipes also requires the USAGE privilege on the parent database and schema.
+
+<br>
+
+# Stream Privileges
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|SELECT|Enables executing a SELECT statement on a stream.|
+|OWNERSHIP|Grants full control over the stream. Only a single role can hold this privilege on a specific object at a time.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on the stream.|
+
+<br>
+
+# Task Privileges 
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|MONITOR|Enables viewing details for the task (using DESCRIBE TASK or SHOW TASKS).|
+|OPERATE|Enables viewing details for the task (using DESCRIBE TASK or SHOW TASKS) and resuming or suspending the task.|
+|OWNERSHIP|Grants full control over the task. Only a single role can hold this privilege on a specific object at a time.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on the task.|
+
+<br>
+
+# Masking Policy Privileges 
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|APPLY|Enables executing the unset and set operations for a masking policy on a column.Note that granting the global APPLY MASKING POLICY privilege (i.e. APPLY MASKING POLICY on ACCOUNT) enables executing the DESCRIBE operation on tables and views.For syntax examples, see [Masking Policy Privileges](https://docs.snowflake.com/en/user-guide/security-column-intro.html#label-security-column-privileges-masking-policies).|
+|OWNERSHIP|Grants full control over the masking policy. Required to alter most properties of a masking policy. Only a single role can hold this privilege on a specific object at a time.|
+### Notes 
+* Operating on a masking policy also requires the USAGE privilege on the parent database and schema.
+
+<br>
+
+# Row Access Policy Privileges
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|APPLY|Enables executing the add and drop operations for the row access policy on a table or view. Note that granting the global APPLY MASKING POLICY privilege (i.e. APPLY ROW ACCESS POLICY on ACCOUNT) enables executing the DESCRIBE operation on tables and views. For syntax examples, see [Summary of DDL Commands, Operations, and Privileges](https://docs.snowflake.com/en/user-guide/security-row-intro.html#label-security-row-privilege-command-summary).|
+|OWNERSHIP|Grants full control over the row access policy. Required to alter most properties of a row access policy. Only a single role can hold this privilege on a specific object at a time.|
+
+### Notes:
+* Operating on a row access policy also requires the USAGE privilege on the parent database and schema.
+
+<br>
+
+# Tag Privileges
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|APPLY|Enables executing the add and drop operations for the tag on a Snowflake object.|
+|OWNERSHIP|Grants full control over the tag. Required to alter most properties of a tag. Only a single role can hold this privilege on a specific object at a time.|
+### Notes:
+* Tags are stored at the schema level.
+
+* Operating on a tag requires the USAGE privilege on the parent database and schema.
+
+<br>
+
+# Sequence Privileges 
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|USAGE|Enables using a sequence in a SQL statement.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on the sequence.|
+|OWNERSHIP|Grants full control over the sequence; required to alter the sequence. Only a single role can hold this privilege on a specific object at a time.|
+### Notes:
+* Operating on a sequence also requires the USAGE privilege on the parent database and schema.
+
+<br>
+
+# Stored Procedure Privileges
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|USAGE|Enables calling a stored procedure.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on the stored procedure.|
+|OWNERSHIP|Grants full control over the stored procedure; required to alter the stored procedure. Only a single role can hold this privilege on a specific object at a time.|
+### Notes:
+* Operating on a stored procedure also requires the USAGE privilege on the parent database and schema.
+
+* If a stored procedure runs with caller’s rights, the user who calls the stored procedure must have privileges on the database objects (e.g. tables) accessed by the stored procedure. For details, see [Understanding Caller’s Rights and Owner’s Rights Stored Procedures](https://docs.snowflake.com/en/sql-reference/stored-procedures-rights.html).
+
+<br>
+
+# User Defined Function (UDF) and External Function Privileges
+|   PRIVILEDGE                                                                  | USAGE                                                             |
+|-------------------------------------------------------------------------------|-------------|
+|USAGE|Enables calling a UDF or external function.|
+|ALL [ PRIVILEGES ]|Grants all privileges, except OWNERSHIP, on the UDF or external function.|
+|OWNERSHIP|Grants full control over the UDF or external function; required to alter the UDF or external function. Only a single role can hold this privilege on a specific object at a time.|
+### Notes:
+* Operating on a UDF or external function also requires the USAGE privilege on the parent database and schema.
+
+* The owner of a UDF must have privileges on the objects accessed by the function; the user who calls a UDF does not need those privileges. For details, see [Security/Privilege Requirements for SQL UDFs](https://docs.snowflake.com/en/developer-guide/udf/sql/udf-sql-introduction.html#label-udf-privilege-requirements).
+
+* The owner of an external function must have the USAGE privilege on the API integration object associated with the external function. For details, see [Access Control](https://docs.snowflake.com/en/sql-reference/external-functions-security.html#label-external-functions-access-control) in the documentation on external functions.
