@@ -50,7 +50,6 @@
 | CREATE DATA EXCHANGE LISTING | Enables creating a new Data Exchange listing. | Must be granted by the ACCOUNTADMIN role. |
 | CREATE INTEGRATION | Enables creating a new notification, security, or storage integration. | Must be granted by the ACCOUNTADMIN role.|
 |CREATE NETWORK POLICY|Enables creating a new network policy.|
-| 
 |CREATE SHARE|Enables a data provider to create a new share. For more details, see Enabling non-ACCOUNTADMIN Roles to Perform Data Sharing Tasks.|Must be granted by the ACCOUNTADMIN role.|
 |CREATE WAREHOUSE|Enables creating a new virtual warehouse.|
 |EXECUTE MANAGED TASK|Grants ability to create tasks that rely on Snowflake-managed compute resources (serverless compute model). Only required for serverless tasks. The role that has the OWNERSHIP privilege on a task must have both the EXECUTE MANAGED TASK and the EXECUTE TASK privilege for the task to run.|Must be granted by the ACCOUNTADMIN role.|
